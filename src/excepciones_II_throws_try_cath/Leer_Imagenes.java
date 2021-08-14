@@ -56,20 +56,28 @@ class LaminaConImagen extends JPanel {
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) throws NullPointerException {
         super.paintComponent(g);
         /*
-            EXCEPCION NO COMPROBADA-RunTimeException-Excepciones que el programador debe controlar
+         EXCEPCION NO COMPROBADA-RunTimeException-Excepciones que el programador debe controlar
          Debemos hacer modificaciónes a nuestro codigo, debido a que si no encuentra la imagen
          al intentar obtener el ancho y alto de la imagen el valor de imagen es Null por lo  que
          nos arrojaria un error
          */
+        /*try {
+         int anchura = imagen.getWidth(this);
+         int altura = imagen.getHeight(this);
+         g.drawImage(imagen, 0, 0, null);
+         } catch (NullPointerException e) {
+         g.drawString("No encontrada", 10, 10);
+         }*/
         if (this.imagen != null) {
             int anchura = imagen.getWidth(this);
             int altura = imagen.getHeight(this);
             g.drawImage(imagen, 0, 0, null);
-        } else { g.drawString("No encontrada", 10,10);
-            
+        } else {
+            g.drawString("No se ha podido cargar la imagen", 10, 10);
+
         }
     }
     private Image imagen;
