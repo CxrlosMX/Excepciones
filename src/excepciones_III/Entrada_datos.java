@@ -16,8 +16,11 @@ public class Entrada_datos {
         int decision = entrada.nextInt();
 
         if (decision == 1) {
-
-            pedirDatos();
+            try {
+                pedirDatos();
+            } catch (InputMismatchException e) {
+                System.out.println("Introduce un valor numerico en edad " + e.getMessage());
+            }
 
         } else {
 
@@ -33,24 +36,24 @@ public class Entrada_datos {
     static void pedirDatos() throws InputMismatchException { //Si nuestro método va bien conseguira el objetivo por otro caso, lanzaria una excepcion-InputMismatchException 
         //Creamos un try-catch para prevenir errores en nuestro codigo
         //Realizar esto no es una muy buena practica debido a que programador debe buscar una solución
-        try {//Con esto evitamos que nuestro programa se caiga
-            Scanner entrada = new Scanner(System.in);
+        //  try {//Con esto evitamos que nuestro programa se caiga
+        Scanner entrada = new Scanner(System.in);
 
-            System.out.println("Introduce tu nombre, por favor");
+        System.out.println("Introduce tu nombre, por favor");
 
-            String nombre_usuario = entrada.nextLine();
+        String nombre_usuario = entrada.nextLine();
 
-            System.out.println("Introduce edad, por favor");
+        System.out.println("Introduce edad, por favor");
 
-            int edad = entrada.nextInt();
+        int edad = entrada.nextInt();
 
-            System.out.println("Hola " + nombre_usuario + ". El año que viene tendras " + (edad + 1) + " años");
+        System.out.println("Hola " + nombre_usuario + ". El año que viene tendras " + (edad + 1) + " años");
 
-            entrada.close();
-            //Si el método sale mal nos lanza este mensaje
-        } catch (InputMismatchException e) {
-            System.out.println("Introduce un valor numerico en edad "+e.getMessage());
-        }
+        entrada.close();
+        //Si el método sale mal nos lanza este mensaje
+        // } catch (InputMismatchException e) {
+        //   System.out.println("Introduce un valor numerico en edad "+e.getMessage());
+        // }
         System.out.println("Hemos terminado");
 
     }
