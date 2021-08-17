@@ -18,6 +18,7 @@ public class Entrada_datos {
         if (decision == 1) {
             try {
                 pedirDatos();
+                //Para evitar el nombre correcto de la Excepcion, podemos usar catch(Exception e) pero no es muy recomendable es una mala practica de programación
             } catch (InputMismatchException e) {
                 System.out.println("Introduce un valor numerico en edad " + e.getMessage());
             }
@@ -32,7 +33,7 @@ public class Entrada_datos {
         entrada.close();
 
     }
-
+    //Excepsiones NO controladas
     static void pedirDatos() throws InputMismatchException { //Si nuestro método va bien conseguira el objetivo por otro caso, lanzaria una excepcion-InputMismatchException 
         //Creamos un try-catch para prevenir errores en nuestro codigo
         //Realizar esto no es una muy buena practica debido a que programador debe buscar una solución
