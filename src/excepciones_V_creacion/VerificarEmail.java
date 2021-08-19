@@ -5,6 +5,7 @@
  */
 package excepciones_V_creacion;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,6 +26,7 @@ public class VerificarEmail {
 
     public static void main(String[] args) {
         String email = JOptionPane.showInputDialog(null, "Introduce tu Email", "Email", 1);
+        //Al ser IOException nuestra excepcion creada por ende el lenguaje java nos obliga a colocar el try-catch
         try {
             //try {
             examinarEmail(email);
@@ -38,7 +40,8 @@ public class VerificarEmail {
         }
     }
 
-    static void examinarEmail(String email) throws Longitud_email { //Indicamos al método que lanza una excepcion
+    static void examinarEmail(String email) throws Longitud_email { //Indicamos al método que lanza una excepcion, en este caso especificamos que 
+        //nuestro método lanza una excecion de tipo Longitud_email(excepcion creada por nosotros
         int arroba = 0;
         boolean punto = false;
         if (email.length() > 3) {
@@ -56,7 +59,7 @@ public class VerificarEmail {
                 System.out.println("Incorrecto");
             }
         } else {
-         
+
             throw new Longitud_email("El Email es demaciado corto");
             /*
              Con estas líneas mandamos manualmente una excepcion
@@ -71,7 +74,7 @@ public class VerificarEmail {
  Para crear nuestra propia excepcion debemos crear una clase que herede de Exception o IOException, RuntimeException
  */
 
-class Longitud_email extends Exception {
+class Longitud_email extends Exception{
 
     /*
      -Las clases que heredan de Exception deben tener dos constructores, constructor por defecto y constructor con parametros
@@ -79,7 +82,7 @@ class Longitud_email extends Exception {
     public Longitud_email() {
     }
 
-    public Longitud_email(String msj_error) {
+    public Longitud_email(String msj_error) { //El atributo que recibe como mensaje, es para especificar el tipo de error que lanza nuestra excepcion
         super(msj_error); //Con esta instruccion mandamos a llamar al constructor de la clase padre
     }
 }
