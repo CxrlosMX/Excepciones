@@ -22,14 +22,15 @@ public class Varias_excepciones {
      */
 
     public static void main(String[] args) {
+        //Excepciones no controladas, esto es una mala practica de programación
         try {
             division();
         } catch (ArithmeticException e) { //Excepcion Aritmetica
-            System.out.println("Estas dividiendo por cero "+e.getMessage());
-        }catch(NumberFormatException e){
+            System.out.println("Estas dividiendo por cero " + e.getMessage());
+        } catch (NumberFormatException e) {
             System.out.println("No has introducido un numero entero");
             System.out.println(e.getMessage()); //Nos informar acerca del error
-            System.out.println("Se ha generado un error de tipo: "+e.getClass()); //Nos devuelve la clase que ha generado el error
+            System.out.println("Se ha generado un error de tipo: " + e.getClass()); //Nos devuelve la clase que ha generado el error
         }
 
     }
